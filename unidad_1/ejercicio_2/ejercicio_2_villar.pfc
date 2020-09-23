@@ -1,0 +1,28 @@
+program tp1_ej2;
+process type npares(n:integer; id:integer; var s:semaphore);
+var
+    i:integer;
+    numero:integer;
+begin
+    
+    numero:=2;
+    for i:=1 to n do begin
+        wait(s);
+        writeln('Proceso n',id,' imprime P: ', numero);
+        signal(s);
+        numero:=numero+2;
+    end;
+end;
+
+var
+    p1:npares;
+    p2:npares;
+    sem: semaphore;
+
+begin
+    initial(sem, 1);
+    cobegin
+        p1(50, 1, sem);
+        p2(20, 2, sem);
+    coend;
+end.
