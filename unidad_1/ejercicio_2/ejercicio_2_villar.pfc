@@ -1,28 +1,44 @@
 program tp1_ej2;
-process type npares(n:integer; id:integer; var s:semaphore);
+process type nparesimpares(par:boolean; n:integer; id:integer; var s:semaphore);
 var
     i:integer;
     numero:integer;
+    l:char;
 begin
-    
-    numero:=2;
+    if par then
+    begin        
+        numero:=2;
+        l:='P';
+    end
+    else
+    begin
+        numero:=1;
+        l:='I';
+    end;
     for i:=1 to n do begin
         wait(s);
-        writeln('Proceso n',id,' imprime P: ', numero);
+        writeln('Proceso n',id,' imprime ', l, ': ', numero);
         signal(s);
         numero:=numero+2;
     end;
 end;
 
+
 var
-    p1:npares;
-    p2:npares;
+    p1,p2,p3:nparesimpares;
     sem: semaphore;
+    cP:integer;
+	cI:integer;
 
 begin
-    initial(sem, 1);
+    writeln('ingrese la cantidad de nros Pares:');
+	readln(cP);
+	writeln('ingrese la cantidad de nros Impares:');
+	readln(cI);
+    
+    initial(sem, 1);    
     cobegin
-        p1(50, 1, sem);
-        p2(20, 2, sem);
+        p1(True, cP, 1, sem);
+        p2(False, cI, 2, sem);
     coend;
 end.
