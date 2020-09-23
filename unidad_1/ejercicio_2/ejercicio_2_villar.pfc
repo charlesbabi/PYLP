@@ -39,6 +39,7 @@ begin
     initial(sem, 1);    
     cobegin
         p1(True, cP, 1, sem);
-        p2(False, cI, 2, sem);
+        p2(True, cP, 2, sem);
+        p3(False, cI, 3, sem);
     coend;
 end.
