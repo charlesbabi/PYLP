@@ -11,5 +11,6 @@
 - Javier Kachuka (@javikachuka)
 - Nicolas Sawczuk (@NicoSawczuk)
 - John Babi (@charlesbabi)
+  <<<<<<< HEAD
 - Facundo Silveira Do Santo (@facundSilveira)
 - Andrea Zakowicz (@Tremoteam)
