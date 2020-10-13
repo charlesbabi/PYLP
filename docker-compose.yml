@@ -2,37 +2,33 @@ version: "3.1"
 
 services:
   pascal:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.pascalfc
     volumes:
       - ./unidad_1:/home
   mpi_openmp:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.mpi_openmp
     volumes:
       - ./unidad_3:/home
   haskell_prolog:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.haskell_prolog
-    volumes: 
+    volumes:
       - ./unidad_4:/home
       - /home/javascript/node_modules
-    ports: 
+    ports:
       - 3000:3000
   firebase:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile.firebase
-    volumes: 
+    volumes:
       - ./unidad_6:/var/www/html
-    ports: 
-<<<<<<< HEAD
+    ports:
       - 5000:5000
       - 9005:9005
       - 3001:80
-=======
-      - 3002:80
->>>>>>> a28860f... Nuevo master
