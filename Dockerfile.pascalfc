@@ -1,0 +1,18 @@
+FROM ubuntu:latest
+
+ARG web_document_root=/home
+
+ENV WEB_DOCUMENT_ROOT=$web_document_root
+
+WORKDIR $web_document_root
+
+RUN apt-get update -y 
+
+COPY /bin/pfc2-0.9.40.x86_64.tar.gz /usr/local/bin 
+
+RUN tar -xvf /usr/local/bin/pfc2-0.9.40.x86_64.tar.gz -C /usr/local/bin/
+
+# RUN groupadd -r curso && useradd --no-log-init -r -g curso curso
+# USER curso 
+
+ENTRYPOINT ["tail", "-f", "/dev/null"]

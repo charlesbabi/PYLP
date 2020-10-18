@@ -1,0 +1,4 @@
+*.obj
+*.lst
+
+**/node_modules/
