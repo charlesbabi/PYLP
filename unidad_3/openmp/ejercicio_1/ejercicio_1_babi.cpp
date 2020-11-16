@@ -1,6 +1,7 @@
 #include <omp.h>
 #include <iostream>
 
+//Para definir la cantidad de hilos
 #define hilos 10
 
 int main()
@@ -10,9 +11,11 @@ int main()
   int thread;
   int variable = 777;
 
+  //Punto 2 para ejecutar por 10 Hilos
   omp_set_num_threads(hilos);
 
-#pragma omp parallel
+//Si le quito el private las variables puede ser modificadas por todos los procesos.
+#pragma omp parallel private(nthreads, thread)
   {
     variable = 4;
     thread = omp_get_thread_num();
